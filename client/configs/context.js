@@ -5,9 +5,11 @@ import {ReactiveDict} from 'meteor/reactive-dict'
 import {Tracker} from 'meteor/tracker'
 
 export function initContext () {
-  Meteor,
-  FlowRouter,
-  Collections,
-  LocalState: new ReactiveDict(),
-  Tracker
+  return {
+    Meteor,
+    FlowRouter,
+    Collections,
+    LocalState: new ReactiveDict(),
+    Tracker
+  }
 }
