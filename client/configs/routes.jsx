@@ -15,7 +15,7 @@ export const initRoutes = (context, actions) => {
     name: 'page.home',
     action() {
       mount(MainLayoutCtx, {
-        content: () => (<Page name='home' />)
+        content: () => (<Page title='home' />)
       });
     }
   });

@@ -2,11 +2,11 @@ import Page from '../components/page/index.jsx'
 import {useDeps} from 'react-simple-di'
 import {composeWithTracker, composeAll} from 'react-komposer'
 
-export const composer = ({context, name}, onData) => {
+export const composer = ({context, title}, onData) => {
   const {Meteor, Collections, Tracker} = context();
 
-  Meteor.subscribe('page', name, () => {
-    const page = Collections.Pages.findOne(name);
+  Meteor.subscribe('page', title, () => {
+    const page = Collections.Pages.findOne(title);
     onData(null, {page});
   });
 
