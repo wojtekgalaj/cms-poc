@@ -5,8 +5,7 @@ export default function () {
     Pages.insert({
       title: 'Bootstrap',
       elements: [
-        '<Header/>',
-        '<LongText>'
+      
       ]
     })
   }

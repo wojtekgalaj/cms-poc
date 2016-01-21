@@ -4,7 +4,7 @@ import {FlowRouter} from 'meteor/kadira:flow-router'
 import {ReactiveDict} from 'meteor/reactive-dict'
 import {Tracker} from 'meteor/tracker'
 
-export function initContext () {
+export function initContext() {
   return {
     Meteor,
     FlowRouter,
