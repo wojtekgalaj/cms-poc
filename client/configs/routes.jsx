@@ -10,7 +10,6 @@ export const initRoutes = (context, actions) => {
 
   const MainLayoutCtx = injectDeps(context, actions)(MainLayout);
 
-  // Move these as a module and call this from a main file
   FlowRouter.route('/', {
     name: 'page.home',
     action() {
@@ -20,4 +19,12 @@ export const initRoutes = (context, actions) => {
     }
   });
 
+  FlowRouter.route('/one', {
+    name: 'page.one',
+    action() {
+      mount(MainLayoutCtx, {
+        content: () => (<Page title='page-one' />)
+      });
+    }
+  });
 };

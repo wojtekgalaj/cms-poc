@@ -1,11 +1,12 @@
 import React from 'react';
 
-const Page = ({title}) => {
-
+const Page = ({page}) => {
   return (
     <div>
-      <h1>This is a page titled {title}.</h1>
-      <p>Awesome stuff incoming</p>
+      <h1>This is a page titled {page.title}.</h1>
+      {page.elements.map(el => (
+        <p>{el.component}</p>
+      ))}
     </div>
   )
 };

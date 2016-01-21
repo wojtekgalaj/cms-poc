@@ -6,7 +6,7 @@ export const composer = ({context, title}, onData) => {
   const {Meteor, Collections, Tracker} = context();
 
   Meteor.subscribe('page', title, () => {
-    const page = Collections.Pages.findOne(title);
+    const page = Collections.Pages.findOne({title});
     onData(null, {page});
   });
 
@@ -14,7 +14,7 @@ export const composer = ({context, title}, onData) => {
   //  we don't need to invalidate tracker because of the
   //  data fetching from the cache.
   const pageFromCache = Tracker.nonreactive(() => {
-    return Collections.Pages.findOne(name);
+    return Collections.Pages.findOne(title);
   });
 
   if (pageFromCache) {
