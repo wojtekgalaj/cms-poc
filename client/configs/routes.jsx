@@ -19,11 +19,19 @@ export const initRoutes = (context, actions) => {
     }
   });
 
-  FlowRouter.route('/one', {
-    name: 'page.one',
+  FlowRouter.route('/home', {
+    name: 'page.home',
     action() {
+      FlowRouter.redirect('/');
+    }
+  });
+
+
+  FlowRouter.route('/:title', {
+    name: 'page.one',
+    action({title}) {
       mount(MainLayoutCtx, {
-        content: () => (<Page title='page-one' />)
+        content: () => (<Page title='contact' />)
       });
     }
   });
