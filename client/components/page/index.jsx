@@ -7,6 +7,7 @@ const Page = ({page}) => {
       {page.elements.map(el => (
         <p>{el.component}</p>
       ))}
+      <div className="editZone"></div>
     </div>
   )
 };

@@ -1,4 +1,4 @@
-import {Pages} from '/libs/collections'
+import {Pages, Elements} from '/libs/collections'
 
 export default function () {
   if (!Pages.findOne()) {
@@ -7,7 +7,7 @@ export default function () {
       elements: [
         {
           key: 0,
-          component: 'titleSection',
+          component: 'pageTitle',
           data: {
             title: 'Home Page',
             subTitle: 'First page you see, duh.'
@@ -15,27 +15,61 @@ export default function () {
         },
         {
           key: 1,
-          component: 'heroSection',
+          component: 'textBlock',
           data: {
-            imageUrl: 'Home Page',
-            caption: 'First page you see, duh.'
+            text: 'First page you see, duh. This should support markdown'
           }
         }
 
       ]
     });
     Pages.insert({
-      title: 'page-one',
+      title: 'contact',
       elements: [
         {
           key: 0,
-          component: 'titleSection',
+          component: 'pageTitle',
           data: {
-            title: 'First Page',
-            subTitle: 'Some great stuff goes here'
+            title: 'Contect Page',
+            subTitle: 'Here we are, just holla!'
+          }
+        },
+        {
+          key: 1,
+          component: 'contactInfo',
+          data: {
+            tel: '+31 777 77 77 77',
+            email: 'holla@packlink.es'
           }
         }
       ]
     });
+
+    Elements.insert({
+      components: {
+        pageTitle: {
+          home: {
+            title: 'Home Page',
+            subtitle: 'First page you see, duh.'
+          },
+          contact: {
+            title: 'Contact Page',
+            subtitle: 'Just holla!'
+          }
+        },
+        textBlock: {
+          home: {
+            text: 'This should support ***markdown***'
+          }
+        },
+        contactInfo: {
+          contact: {
+            tel: '+31 777 77 77 77',
+            email: 'holla@packlink.es'
+          }
+        }
+      }
+    }
+    );
   }
 }
