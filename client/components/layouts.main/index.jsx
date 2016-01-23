@@ -1,5 +1,6 @@
 import React from 'react';
 import Navigation from '../../containers/navigation.js';
+import EditButton from '../../containers/edit-button.js';
 
 const Layout = ({content = () => null }) => {
   var containerStyle = {
@@ -8,9 +9,12 @@ const Layout = ({content = () => null }) => {
     fontFamily: 'sans-serif'
   }
   return (
-    <div style={containerStyle}>
+    <div
+      style={containerStyle}
+      >
       <h1>CMS</h1>
       <Navigation/>
+      <EditButton/>
 
       <main>{content()}</main>
 
