@@ -13,25 +13,18 @@ export const initRoutes = (context, actions) => {
   FlowRouter.route('/', {
     name: 'page.home',
     action() {
-      mount(MainLayoutCtx, {
-        content: () => (<Page title='home' />)
-      });
-    }
-  });
-
-  FlowRouter.route('/home', {
-    name: 'page.home',
-    action() {
-      FlowRouter.redirect('/');
+      FlowRouter.redirect('/page/home');
     }
   });
 
 
-  FlowRouter.route('/:title', {
+  FlowRouter.route('/page/:title', {
     name: 'page.one',
     action({title}) {
       mount(MainLayoutCtx, {
-        content: () => (<Page title='contact' />)
+        content: () => {
+          return (<Page title={title} />)
+        }
       });
     }
   });
