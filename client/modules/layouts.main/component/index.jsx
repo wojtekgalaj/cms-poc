@@ -1,6 +1,6 @@
 import React from 'react';
-import Navigation from '../../containers/navigation.js';
-import EditButton from '../../containers/edit-button.js';
+import Navigation from '../../navigation/container/navigation.js';
+import EditButton from '../../edit-button/container/edit-button.js';
 
 const Layout = ({content = () => null }) => {
   var containerStyle = {

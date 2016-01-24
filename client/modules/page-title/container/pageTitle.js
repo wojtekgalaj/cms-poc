@@ -1,4 +1,4 @@
-import PageTitle from '../components/page-title/index.jsx'
+import PageTitle from '../component/index.jsx'
 import {useDeps} from 'react-simple-di'
 import {composeWithTracker, composeAll} from 'react-komposer'
 

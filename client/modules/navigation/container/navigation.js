@@ -1,4 +1,4 @@
-import Navigation from '../components/navigation/index.jsx'
+import Navigation from '../component/index.jsx'
 import {useDeps} from 'react-simple-di'
 import {composeWithTracker, composeAll} from 'react-komposer'
 

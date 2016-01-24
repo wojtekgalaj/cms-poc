@@ -1,4 +1,4 @@
-import EditButton from '../components/edit-button/index.jsx'
+import EditButton from '../component/index.jsx'
 import {useDeps} from 'react-simple-di'
 import {composeAll} from 'react-komposer'
 
