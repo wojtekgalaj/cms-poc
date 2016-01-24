@@ -11,7 +11,7 @@ class Navigation extends React.Component {
     return (
       <nav>
         {pages.map(current => (
-            <a href={`/page/${current.title}`}>{current.title} </a>
+            <a key={current.title} href={`/page/${current.title}`}>{current.title} </a>
           )
         )}
       </nav>

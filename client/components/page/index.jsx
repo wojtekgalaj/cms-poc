@@ -5,7 +5,7 @@ const Page = ({page}) => {
     <div>
       <h1>This is a page titled {page.title}.</h1>
       {page.elements.map(el => (
-        <p>{el.component}</p>
+        <p key={el.component}>{el.component}</p>
       ))}
       <div className="editZone"></div>
     </div>
