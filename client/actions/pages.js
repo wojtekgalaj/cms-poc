@@ -4,6 +4,10 @@ export default {
     LocalState.set('editMode', true);
   },
 
+  addElement() {
+    console.log('Adding an element');
+  },
+
   clearErrors({LocalState}) {
     return LocalState.set('SAVING_ERROR', null);
   }
