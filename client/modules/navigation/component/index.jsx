@@ -10,8 +10,8 @@ class Navigation extends React.Component {
     const {pages} = this.props;
     return (
       <nav>
-        {pages.map(current => (
-            <a key={current.title} href={`/page/${current.title}`}>{current.title} </a>
+        {pages.map((current, index) => (
+            <a key={index} href={`/page/${current.title}`}>{current.title} </a>
           )
         )}
       </nav>

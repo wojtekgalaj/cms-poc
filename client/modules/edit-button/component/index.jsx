@@ -2,8 +2,9 @@ import React from 'react';
 
 
 class EditButton extends React.Component {
-  editMode() {
+  editMode(test) {
     const {editMode} = this.props;
+    console.log(test);
     editMode();
   }
   render() {
@@ -17,7 +18,7 @@ class EditButton extends React.Component {
     return (
       <button
           style={style.button}
-          onClick={this.editMode.bind(this)}>EDIT</button>
+          onClick={this.editMode.bind(this, 'test')}>EDIT</button>
     )
   }
 }

@@ -3,12 +3,12 @@ import React from 'react';
 class EditZone extends React.Component {
 
   showOptions() {
-    console.log('SHOW OPTIONS');
+    console.log('SHOW OPTIONS', this.props.elements);
+    console.log('editMode ', this.props.editMode);
   }
 
   render() {
     const {editMode, elements} = this.props;
-    debugger
     var style = {
       padding: 20,
       background: editMode ? '#bada55' : 'transparent'

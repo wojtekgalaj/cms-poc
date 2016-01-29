@@ -7,7 +7,7 @@ export const composer = ({context, title}, onData) => {
 
   Meteor.subscribe('elements', () => {
     const elements = Collections.Elements.findOne();
-    var editMode = LocalState.get('editMode');
+    const editMode = LocalState.get('editMode')
     onData(null, {elements, editMode});
   });
 

@@ -6,7 +6,6 @@ export default function () {
       title: 'home',
       elements: [
         {
-          key: 0,
           component: 'pageTitle',
           data: {
             title: 'Home Page',
@@ -14,20 +13,18 @@ export default function () {
           }
         },
         {
-          key: 1,
           component: 'textBlock',
           data: {
             text: 'First page you see, duh. This should support markdown'
           }
         }
-
       ]
     });
+
     Pages.insert({
       title: 'contact',
       elements: [
         {
-          key: 0,
           component: 'pageTitle',
           data: {
             title: 'Contect Page',
@@ -35,7 +32,6 @@ export default function () {
           }
         },
         {
-          key: 1,
           component: 'contactInfo',
           data: {
             tel: '+31 777 77 77 77',
@@ -45,31 +41,15 @@ export default function () {
       ]
     });
 
-    Elements.insert({
-      components: {
-        pageTitle: {
-          home: {
-            title: 'Home Page',
-            subtitle: 'First page you see, duh.'
-          },
-          contact: {
-            title: 'Contact Page',
-            subtitle: 'Just holla!'
-          }
-        },
-        textBlock: {
-          home: {
-            text: 'This should support ***markdown***'
-          }
-        },
-        contactInfo: {
-          contact: {
-            tel: '+31 777 77 77 77',
-            email: 'holla@packlink.es'
-          }
-        }
-      }
-    }
-    );
+    let aviableComponents = [
+      {componentName: 'pageTitle'},
+      {componentName: 'textBlock'},
+      {componentName: 'contactInfo'}
+    ]
+
+    aviableComponents.forEach(function (el) {
+      Elements.insert(el)
+    })
+
   }
 }

@@ -3,11 +3,11 @@ import {useDeps} from 'react-simple-di'
 import {composeWithTracker, composeAll} from 'react-komposer'
 
 export const composer = ({context, title}, onData) => {
-  var {Meteor, Collections, Tracker, LocalState} = context();
-  const editMode = LocalState.get('editMode');
+  var {Meteor, Collections, Tracker} = context();
+
   Meteor.subscribe('page', title, () => {
     const page = Collections.Pages.findOne({title});
-    onData(null, {page}, editMode);
+    onData(null, {page});
   });
 
   // support latency compensation
@@ -18,7 +18,7 @@ export const composer = ({context, title}, onData) => {
   });
 
   if (pageFromCache) {
-    onData(null, {page: pageFromCache}, editMode);
+    onData(null, {page: pageFromCache});
   } else {
     onData();
   }

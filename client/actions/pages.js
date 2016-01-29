@@ -1,7 +1,9 @@
 export default {
   editMode({LocalState}) {
     console.log('SETTING EDIT MODE ON STATE');
-    LocalState.set('editMode', true);
+    let currentMode = LocalState.get('editMode')
+    LocalState.set('editMode', !currentMode);
+    console.log(currentMode);
   },
 
   addElement() {
