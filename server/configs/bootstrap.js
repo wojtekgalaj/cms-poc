@@ -6,14 +6,14 @@ export default function () {
       title: 'home',
       elements: [
         {
-          component: 'pageTitle',
+          component: 'PageTitle',
           data: {
             title: 'Home Page',
             subTitle: 'First page you see, duh.'
           }
         },
         {
-          component: 'textBlock',
+          component: 'TextBlock',
           data: {
             text: 'First page you see, duh. This should support markdown'
           }
@@ -25,14 +25,14 @@ export default function () {
       title: 'contact',
       elements: [
         {
-          component: 'pageTitle',
+          component: 'PageTitle',
           data: {
             title: 'Contect Page',
             subTitle: 'Here we are, just holla!'
           }
         },
         {
-          component: 'contactInfo',
+          component: 'ContactInfo',
           data: {
             tel: '+31 777 77 77 77',
             email: 'holla@packlink.es'
@@ -42,9 +42,9 @@ export default function () {
     });
 
     let aviableComponents = [
-      {componentName: 'pageTitle'},
-      {componentName: 'textBlock'},
-      {componentName: 'contactInfo'}
+      {componentName: 'PageTitle'},
+      {componentName: 'TextBlock'},
+      {componentName: 'ContactInfo'}
     ]
 
     aviableComponents.forEach(function (el) {
