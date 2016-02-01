@@ -11,6 +11,7 @@ class Page extends React.Component {
     // I need to find a way to do this without the
     // switch.
     return this.props.page.elements.map((el, index) => {
+      el.data.positionOnPage = index
       switch (el.component) {
         case 'ContactInfo':
           return <ContactInfo data={el.data} key={index}/>
