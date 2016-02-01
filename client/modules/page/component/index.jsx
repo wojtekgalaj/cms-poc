@@ -6,6 +6,7 @@ import PageTitle from '../../page-elements/page-title/component/index.jsx'
 import TextBlock from '../../page-elements/text-block/component/index.jsx'
 
 class Page extends React.Component {
+
   renderElements() {
     const {page, edit} = this.props
     // I need to find a way to do this without the

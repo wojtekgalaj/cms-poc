@@ -1,7 +1,6 @@
 import React from 'react'
 
 const TextBlock = ({data}) => {
-  console.log('TextBlock Data ', data);
   return (
     <div>
       <small>Position on page: {data.positionOnPage}</small>
@@ -10,4 +9,5 @@ const TextBlock = ({data}) => {
   )
 }
 
+TextBlock.displayName = 'TextBlock'
 export default TextBlock

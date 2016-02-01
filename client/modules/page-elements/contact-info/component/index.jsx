@@ -12,4 +12,5 @@ const ContactInfo = ({data}) => {
   )
 }
 
+ContactInfo.displayName = 'ContactInfo'
 export default ContactInfo
