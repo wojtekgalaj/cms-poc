@@ -3,7 +3,11 @@ import React from 'react'
 const PageTitle = ({data}) => {
   console.log('Page title Data ', data);
   return (
-    <h1>PAGE TITLE</h1>
+    <div>
+      <h1>{data.title}</h1>
+      <h3>{data.subTitle}</h3>
+    </div>
+
   )
 }
 

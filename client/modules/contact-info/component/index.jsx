@@ -1,9 +1,13 @@
 import React from 'react'
 
+this.displayName = 'ContactInfo'
 const ContactInfo = ({data}) => {
-  console.log('Contact Info Data ', data);
   return (
-    <h1>CONTACT INFO</h1>
+    <div>
+      <hr/>
+      <p>Tel: {data.tel}</p>
+      <p>email: {data.email}</p>
+    </div>
   )
 }
 

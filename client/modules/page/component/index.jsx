@@ -6,26 +6,32 @@ import PageTitle from '../../page-title/component/index.jsx'
 import TextBlock from '../../text-block/component/index.jsx'
 
 class Page extends React.Component {
-  renderElement(comp, data, container) {
-    const createdElement = React.createElement(comp, data)
-    console.log('1: ', createdElement);
-    console.log('2: ', container);
-  }
+  renderElements() {
+    const page = this.props
+    // I need to find a way to do this without the
+    // switch.
+    return this.props.page.elements.map((el, index) => {
+      switch (el.component) {
+        case 'ContactInfo':
+          return <ContactInfo data={el.data} key={index}/>
+        case 'PageTitle':
+          return <PageTitle data={el.data} key={index}/>
+        case 'TextBlock':
+          return <TextBlock data={el.data} key={index}/>
 
-  componentDidMount() {
-    const {page} = this.props
-    page.elements.map((el) => {
-      this.renderElement(el.component, el.data, document.getElementById('page-elements'))
+        default:
+
+      }
+      // This renders to the dom an unrendered component
+      // return ReactDOM.createElement(el.component, el.data);
     })
-    console.log('ddd', document.getElementById('page-elements'));
   }
 
   render() {
     const {page} = this.props
     return (
       <div>
-        <h1>This is a page titled {page.title}.</h1>
-        <div id="page-elements"></div>
+        {this.renderElements()}
       </div>
     )
   }
