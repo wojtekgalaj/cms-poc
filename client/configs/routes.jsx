@@ -11,7 +11,7 @@ export const initRoutes = (context, actions) => {
   const MainLayoutCtx = injectDeps(context, actions)(MainLayout);
 
   FlowRouter.route('/', {
-    name: 'page.home',
+    name: 'page',
     action() {
       FlowRouter.redirect('/page/home');
     }
@@ -19,11 +19,22 @@ export const initRoutes = (context, actions) => {
 
 
   FlowRouter.route('/page/:title', {
-    name: 'page.one',
+    name: 'page',
     action({title}) {
       mount(MainLayoutCtx, {
         content: () => {
           return (<Page title={title} />)
+        }
+      });
+    }
+  });
+
+  FlowRouter.route('/page/:title/edit', {
+    name: 'page.edit',
+    action({title}) {
+      mount(MainLayoutCtx, {
+        content: () => {
+          return (<Page title={title} edit={true}/>)
         }
       });
     }

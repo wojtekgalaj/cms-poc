@@ -14,8 +14,6 @@ const Layout = ({content = () => null }) => {
       >
       <h1>CMS</h1>
       <Navigation/>
-      <EditButton/>
-
       <main>{content()}</main>
 
     </div>

@@ -7,7 +7,7 @@ import TextBlock from '../../text-block/component/index.jsx'
 
 class Page extends React.Component {
   renderElements() {
-    const page = this.props
+    const {page, edit} = this.props
     // I need to find a way to do this without the
     // switch.
     return this.props.page.elements.map((el, index) => {
@@ -29,9 +29,10 @@ class Page extends React.Component {
   }
 
   render() {
-    const {page} = this.props
+    const {page, edit} = this.props
     return (
       <div>
+        {edit ? <h1>Editing</h1> : <h1>Not Editing</h1>}
         {this.renderElements()}
       </div>
     )
