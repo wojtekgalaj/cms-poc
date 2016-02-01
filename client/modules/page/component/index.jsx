@@ -1,9 +1,9 @@
 /* eslint no-unused-vars: 0 */
 import React from 'react';
 import ReactDOM from 'react'
-import ContactInfo from '../../contact-info/component/index.jsx'
-import PageTitle from '../../page-title/component/index.jsx'
-import TextBlock from '../../text-block/component/index.jsx'
+import ContactInfo from '../../page-elements/contact-info/component/index.jsx'
+import PageTitle from '../../page-elements/page-title/component/index.jsx'
+import TextBlock from '../../page-elements/text-block/component/index.jsx'
 
 class Page extends React.Component {
   renderElements() {
@@ -12,6 +12,7 @@ class Page extends React.Component {
     // switch.
     return this.props.page.elements.map((el, index) => {
       el.data.positionOnPage = index
+      el.data.edit = edit
       switch (el.component) {
         case 'ContactInfo':
           return <ContactInfo data={el.data} key={index}/>
