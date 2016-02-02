@@ -3,11 +3,11 @@ import {useDeps} from 'react-simple-di'
 import {composeWithTracker, composeAll} from 'react-komposer'
 
 const composer = ({context}, onData) => {
-  const {Meteor, Collections} = context();
+  const {Meteor, Collections, Session} = context();
 
   if (Meteor.subscribe('page.titles').ready()) {
     var pages = Collections.Pages.find().fetch();
-    onData(null, {pages});
+    onData(null, {pages, Session});
   }
 };
 

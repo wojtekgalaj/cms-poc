@@ -2,7 +2,7 @@
 import React from 'react';
 import ReactDOM from 'react'
 import ContactInfo from '../../page-elements/contact-info/component/index.jsx'
-import PageTitle from '../../page-elements/page-title/component/index.jsx'
+import PageTitle from '../../page-elements/page-title/container/page-title'
 import TextBlock from '../../page-elements/text-block/component/index.jsx'
 
 class Page extends React.Component {
@@ -30,12 +30,26 @@ class Page extends React.Component {
     })
   }
 
+  componentDidMount() {
+    const {Session, page} = this.props
+    Session.set('currentPage', {
+      title: page.title,
+      elements: []
+    });
+  }
+
+  savePage() {
+    const {savePage} = this.props
+
+    savePage()
+  }
+
   render() {
     const {page, edit} = this.props
     return (
       <div>
-        {edit ? <h1>Editing</h1> : <h1>Not Editing</h1>}
         {this.renderElements()}
+        {edit ? <button onClick={this.savePage.bind(this)}>SAVE</button> : '' }
       </div>
     )
   }

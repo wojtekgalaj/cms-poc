@@ -1,13 +1,17 @@
 export default {
-  editMode({LocalState}) {
+  editMode({Session}) {
     console.log('SETTING EDIT MODE ON STATE');
-    let currentMode = LocalState.get('editMode')
-    LocalState.set('editMode', !currentMode);
+    let currentMode = Session.get('editMode')
+    Session.set('editMode', !currentMode);
     console.log(currentMode);
   },
 
   addElement() {
     console.log('Adding an element');
+  },
+
+  savePage({Session, Collections}) {
+    debugger
   },
 
   clearErrors({LocalState}) {

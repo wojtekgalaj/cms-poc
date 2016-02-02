@@ -1,25 +1,56 @@
 import React from 'react'
 
-const PageTitle = ({data}) => {
+class PageTitle extends React.Component {
 
+  updatePageModel() {
+    const {Session, data} = this.props
+    const {title, subTitle} = this.refs
+    const pageModel = Session.get('currentPage')
 
-  const presentation = (
-    <div>
-      <small>Position on page: {data.positionOnPage}</small>
-      <h1>{data.title}</h1>
-      <h3>{data.subTitle}</h3>
-    </div>
-  )
+    if (!data.edit) return;
 
-  const editing = (
-    <div>
-      <small>Position on page: {data.positionOnPage}</small>
-      <h1><input type="text" value={data.title}/></h1>
-      <h3><input type="text" value={data.subTitle}/></h3>
-    </div>
-  )
-  return data.edit ? editing : presentation
+    pageModel.elements[data.positionOnPage] = {
+      component: 'PageTitle',
+      data: {
+        title: title.value,
+        subTitle: subTitle.value
+      }
+    }
+    Session.set('currentPage', pageModel)
+  }
 
+  componentDidMount() {
+    // this.updatePageModel()
+  }
+
+  onInputChange() {
+    this.updatePageModel()
+  }
+
+  render() {
+    const {data} = this.props
+    const presentation = (
+      <div>
+        <h1>{data.title}</h1>
+        <h3>{data.subTitle}</h3>
+      </div>
+    )
+
+    const editing = (
+      <div>
+        <h1><input
+              onChange={this.onInputChange.bind(this)}
+              ref='title'
+              type="text" defaultValue={data.title}/></h1>
+        <h3><input
+              onChange={this.onInputChange.bind(this)}
+              ref='subTitle'
+              type="text" defaultValue={data.subTitle}/></h3>
+      </div>
+    )
+
+    return data.edit ? editing : presentation
+  }
 }
 
 PageTitle.displayName = 'PageTitle'

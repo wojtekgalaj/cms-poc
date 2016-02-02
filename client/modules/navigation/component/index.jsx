@@ -2,10 +2,12 @@ import React from 'react';
 
 
 class Navigation extends React.Component {
+
   editMode() {
     const {editMode} = this.props;
     editMode();
   }
+
   render() {
     const {pages} = this.props;
     return (
