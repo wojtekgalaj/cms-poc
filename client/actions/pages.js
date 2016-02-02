@@ -10,9 +10,9 @@ export default {
     console.log('Adding an element');
   },
 
-  savePage({Session, Collections}) {
+  savePage({Meteor, Session}) {
     const sessionPage = Session.get('currentPage')
-    const pageToSave = Collections.Pages.update({title: sessionPage.title}, sessionPage)
+    Meteor.call('page.save', sessionPage)
   },
 
   clearErrors({LocalState}) {
