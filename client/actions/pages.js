@@ -11,7 +11,8 @@ export default {
   },
 
   savePage({Session, Collections}) {
-    debugger
+    const sessionPage = Session.get('currentPage')
+    const pageToSave = Collections.Pages.update({title: sessionPage.title}, sessionPage)
   },
 
   clearErrors({LocalState}) {
