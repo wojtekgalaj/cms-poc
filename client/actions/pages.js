@@ -1,18 +1,29 @@
 export default {
   editMode({Session}) {
-    console.log('SETTING EDIT MODE ON STATE');
     let currentMode = Session.get('editMode')
     Session.set('editMode', !currentMode);
-    console.log(currentMode);
   },
 
-  addElement() {
-    console.log('Adding an element');
+  addElement(name, pageTitle, index, order) {
+    Meteor.call('page.addElement', name, pageTitle, index, order)
   },
 
   savePage({Meteor, Session}) {
     const sessionPage = Session.get('currentPage')
     Meteor.call('page.save', sessionPage)
+  },
+
+  deletePage({Meteor, Session}) {
+    const sessionPage = Session.get('currentPage')
+    Meteor.call('page.delete', sessionPage)
+  },
+
+  addPage({Meteor, Collections}, title) {
+    if (Collections.Pages.findOne({title})) {
+      alert('Page with that name exists already');
+      return
+    }
+    Meteor.call('page.add', title)
   },
 
   clearErrors({LocalState}) {

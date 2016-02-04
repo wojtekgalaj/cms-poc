@@ -26,6 +26,8 @@ export const composer = ({context, title}, onData) => {
 
 export const depsMapper = (context, actions) => ({
   savePage: actions.pages.savePage,
+  deletePage: actions.pages.deletePage,
+  addPage: actions.pages.addPage,
   context: () => context
 })
 

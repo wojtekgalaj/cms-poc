@@ -2,20 +2,34 @@ import React from 'react';
 
 class EditZone extends React.Component {
 
-  showOptions() {
-    console.log('SHOW OPTIONS', this.props.elements);
-    console.log('editMode ', this.props.editMode);
+  addElementToPage(name) {
+    const {
+      index,
+      pageTitle,
+      order,
+      addElement
+    } = this.props
+
+    addElement(name, pageTitle, index, order)
   }
 
   render() {
-    const {editMode, elements} = this.props;
-    var style = {
-      padding: 20,
-      background: editMode ? '#bada55' : 'transparent'
+    const containerStyle = {
+      padding: 5,
+      background: '#bada55'
     };
 
+    const {elements} = this.props
+
     return (
-      <div onMouseOver={this.showOptions.bind(this)} style={style}></div>
+      <div style={containerStyle}>
+        <div>
+          {elements.map((el, index) => <button
+            onClick={this.addElementToPage.bind(this, el.componentName)}
+            key={index}>{el.componentName}
+          </button>)}
+        </div>
+      </div>
     )
   }
 }

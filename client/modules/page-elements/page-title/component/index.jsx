@@ -20,7 +20,7 @@ class PageTitle extends React.Component {
   }
 
   componentDidMount() {
-    // this.updatePageModel()
+    this.updatePageModel()
   }
 
   onInputChange() {

@@ -6,16 +6,16 @@ export const composer = ({context, title}, onData) => {
   const {Meteor, Collections, LocalState} = context();
 
   Meteor.subscribe('elements', () => {
-    const elements = Collections.Elements.findOne();
-    const editMode = LocalState.get('editMode')
-    onData(null, {elements, editMode});
+    const elements = Collections.Elements.find({}).fetch()
+    onData(null, {elements});
   });
 
   onData();
 };
 
-export const depsMapper = (context) => {
+export const depsMapper = (context, actions) => {
   return {
+    addElement: actions.pages.addElement,
     context: () => context
   }
 };
