@@ -19,13 +19,19 @@ Meteor.methods({
     check(index, Number)
     check(order, String)
 
-    console.log('ADD EL METHOD');
     let oldPage = Pages.findOne({title: pageTitle})
 
     let elements = oldPage.elements;
 
-    elements.splice(index, 0, name);
-    console.log('xxxxx ', elements);
+    elements.splice(index, 0, {
+      component: name,
+      data: {}
+    });
+
+    oldPage.elements = elements;
+
+    let xxx = Pages.update({title: pageTitle}, oldPage)
+    console.log(xxx);
   },
 
   'page.add'(title) {

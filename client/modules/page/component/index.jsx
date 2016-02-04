@@ -36,10 +36,13 @@ class Page extends React.Component {
     savePage()
   }
 
+
   renderElements() {
     const {page, edit, Session} = this.props
     // I need to find a way to do this without the
     // switch.
+    console.log('Page elements ', this.props.page.elements);
+
     return this.props.page.elements.map((el, index) => {
       el.data.positionOnPage = index
       el.data.edit = edit

@@ -3,10 +3,19 @@ import React from 'react'
 this.displayName = 'ContactInfo'
 class ContactInfo extends React.Component {
 
+  fillInTheBlanks(data) {
+    data.tel = data.tel || 'Placeholder'
+    data.email = data.email || 'Placeholder'
+    return data
+  }
+
   updatePageModel() {
-    const {Session, data} = this.props
+    const {Session} = this.props
+    let {data} = this.props
     const {tel, email} = this.refs
     const pageModel = Session.get('currentPage')
+
+    data = this.fillInTheBlanks(data)
 
     if (!data.edit) return;
 

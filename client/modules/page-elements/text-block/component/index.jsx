@@ -2,11 +2,19 @@ import React from 'react'
 
 class TextBlock extends React.Component {
 
+  fillInTheBlanks(data) {
+    data.title = data.title || 'Placeholder'
+    data.subTitle = data.subTitle || 'Placeholder'
+    return data
+  }
 
   updatePageModel() {
-    const {Session, data} = this.props
+    const {Session} = this.props
+    let {data} = this.props
     const {text} = this.refs
     const pageModel = Session.get('currentPage')
+
+    data = this.fillInTheBlanks(data)
 
     if (!data.edit) return;
 
