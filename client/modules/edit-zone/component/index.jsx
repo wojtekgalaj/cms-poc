@@ -10,6 +10,10 @@ class EditZone extends React.Component {
       addElement
     } = this.props
 
+    console.log('name ', name);
+    console.log('pageTitle ', pageTitle);
+    console.log('order ', order);
+    console.log('index ', index);
     addElement(name, pageTitle, index, order)
   }
 

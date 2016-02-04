@@ -4,7 +4,7 @@ export default {
     Session.set('editMode', !currentMode);
   },
 
-  addElement(name, pageTitle, index, order) {
+  addElement(context, name, pageTitle, index, order) {
     Meteor.call('page.addElement', name, pageTitle, index, order)
   },
 

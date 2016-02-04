@@ -16,9 +16,10 @@ Meteor.methods({
   'page.addElement'(name, pageTitle, index, order) {
     check(name, String)
     check(pageTitle, String)
-    check(index, Integer)
+    check(index, Number)
     check(order, String)
 
+    console.log('ADD EL METHOD');
     let oldPage = Pages.findOne({title: pageTitle})
 
     let elements = oldPage.elements;
