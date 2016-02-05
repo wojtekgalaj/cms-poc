@@ -11,7 +11,6 @@ class Page extends React.Component {
 
   componentWillMount() {
     const {Session, page} = this.props
-    console.log('setting currentPage in page component');
     Session.set('currentPage', {
       title: page.title,
       elements: []
@@ -37,12 +36,27 @@ class Page extends React.Component {
   }
 
 
+  renderContent() {
+    const {page} = this.props
+
+    if (page.elements.length) {
+      return this.renderElements()
+    } else {
+      return this.renderEditZone(page.title)
+    }
+  }
+
+  renderEditZone(title) {
+    return <EditZone index={0} pageTitle={title} order='before'/>
+  }
+
+
   renderElements() {
     const {page, edit, Session} = this.props
     // I need to find a way to do this without the
     // switch.
-    console.log('Page elements ', this.props.page.elements);
 
+    console.log('xxx ', this.props.page.elements);
     return this.props.page.elements.map((el, index) => {
       el.data.positionOnPage = index
       el.data.edit = edit
@@ -50,7 +64,6 @@ class Page extends React.Component {
         case 'ContactInfo':
           return (
             <div key={index}>
-              {edit ? <EditZone index={index} pageTitle={page.title} order='before'/> : <span></span>}
               <ContactInfo data={el.data}/>
               {edit ? <EditZone index={index} pageTitle={page.title} order='after'/> : <span></span>}
             </div>
@@ -58,7 +71,6 @@ class Page extends React.Component {
         case 'PageTitle':
           return (
             <div key={index}>
-              {edit ? <EditZone index={index} pageTitle={page.title} order='before'/> : <span></span>}
               <PageTitle data={el.data}/>
               {edit ? <EditZone index={index} pageTitle={page.title} order='after'/> : <span></span>}
             </div>
@@ -66,7 +78,6 @@ class Page extends React.Component {
         case 'TextBlock':
           return (
             <div key={index}>
-              {edit ? <EditZone index={index} pageTitle={page.title} order='before'/> : <span></span>}
               <TextBlock data={el.data}/>
               {edit ? <EditZone index={index} pageTitle={page.title} order='after'/> : <span></span>}
             </div>
@@ -84,7 +95,7 @@ class Page extends React.Component {
     const {page, edit} = this.props
     return (
       <div>
-        {this.renderElements()}
+        {this.renderContent()}
         {edit ? <button onClick={this.savePage.bind(this)}>SAVE</button> : '' }
         <button onClick={this.addPage.bind(this)}>Add Page</button>
         <input type="text" ref="newPageTitle" defaultValue="Title for new page"></input>

@@ -7,6 +7,7 @@ export const composer = ({context, title}, onData) => {
 
   Meteor.subscribe('page', title, () => {
     const page = Collections.Pages.findOne({title});
+    console.log('page subsription ran');
     onData(null, {page, Session});
   });
 

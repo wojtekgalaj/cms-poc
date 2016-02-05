@@ -23,15 +23,14 @@ Meteor.methods({
 
     let elements = oldPage.elements;
 
-    elements.splice(index, 0, {
+    elements.splice(index + 1, 0, {
       component: name,
       data: {}
     });
 
     oldPage.elements = elements;
 
-    let xxx = Pages.update({title: pageTitle}, oldPage)
-    console.log(xxx);
+    Pages.update({title: pageTitle}, oldPage)
   },
 
   'page.add'(title) {
