@@ -47,9 +47,11 @@ class TextBlock extends React.Component {
 
     const editing = (
       <div>
+        <hr/>
         <input
           onChange={this.onInputChange.bind(this)}
           type='text' ref='text' defaultValue={data.text}/>
+        <hr/>
       </div>
     )
 

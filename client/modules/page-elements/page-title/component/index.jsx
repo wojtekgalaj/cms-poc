@@ -47,6 +47,7 @@ class PageTitle extends React.Component {
 
     const editing = (
       <div>
+        <hr/>
         <h1><input
               onChange={this.onInputChange.bind(this)}
               ref='title'
@@ -55,6 +56,7 @@ class PageTitle extends React.Component {
               onChange={this.onInputChange.bind(this)}
               ref='subTitle'
               type="text" defaultValue={data.subTitle}/></h3>
+        <hr/>
       </div>
     )
 

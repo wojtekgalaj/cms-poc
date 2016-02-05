@@ -57,6 +57,7 @@ class ContactInfo extends React.Component {
         <input
           onChange={this.onInputChange.bind(this)}
           type="text" ref="email" defaultValue={data.email}/>
+        <hr/>
       </div>
     )
 
