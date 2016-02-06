@@ -4,6 +4,7 @@ import {FlowRouter} from 'meteor/kadira:flow-router'
 import {ReactiveDict} from 'meteor/reactive-dict'
 import {Tracker} from 'meteor/tracker'
 import {Session} from 'meteor/session'
+import {Redux} from 'redux'
 
 export function initContext() {
   return {
@@ -12,6 +13,7 @@ export function initContext() {
     Collections,
     LocalState: new ReactiveDict(),
     Session,
+    Redux,
     Tracker
   }
 }
