@@ -31,6 +31,8 @@ const ElementUtils = (() => {
         component: elementName,
         data: elementData
       }
+
+      console.log(`Updating ${elementName} on ${data.positionOnPage} with ${JSON.stringify(elementData)}`);
       Session.set('currentPage', pageModel)
     }
   }

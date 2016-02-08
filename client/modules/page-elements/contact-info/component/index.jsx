@@ -8,6 +8,10 @@ class ContactInfo extends React.Component {
     ElementUtils.updatePageModel(this.props, this.refs, 'ContactInfo')
   }
 
+  componentDidUpdate() {
+    ElementUtils.updatePageModel(this.props, this.refs, 'ContactInfo')
+  }
+
   onInputChange() {
     ElementUtils.updatePageModel(this.props, this.refs, 'ContactInfo')
   }

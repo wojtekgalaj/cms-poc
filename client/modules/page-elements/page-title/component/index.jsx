@@ -8,6 +8,10 @@ class PageTitle extends React.Component {
     ElementUtils.updatePageModel(this.props, this.refs, 'PageTitle')
   }
 
+  componentDidUpdate() {
+    ElementUtils.updatePageModel(this.props, this.refs, 'PageTitle')
+  }
+
   onInputChange() {
     ElementUtils.updatePageModel(this.props, this.refs, 'PageTitle')
   }

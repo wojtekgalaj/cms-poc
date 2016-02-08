@@ -11,12 +11,16 @@ class TextBlock extends React.Component {
     ElementUtils.updatePageModel(this.props, this.refs, 'TextBlock')
   }
 
+  componentDidUpdate() {
+    ElementUtils.updatePageModel(this.props, this.refs, 'TextBlock')
+  }
+
   render() {
     const {data} = this.props
 
     const presentation = (
       <div>
-        <p>{data.text}</p>
+        <p ref='text'>{data.text}</p>
       </div>
     )
 
