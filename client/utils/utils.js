@@ -2,7 +2,9 @@ const ElementUtils = (() => {
 
   return {
     fillInTheBlanks(data) {
+      console.log('x ', data);
       Object.keys(data).forEach((key) => {
+        console.log('filling in data key ', data[key]);
         data[key] = data[key] === undefined ? 'placeholder' : data[key]
       })
       return data
