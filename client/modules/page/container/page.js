@@ -3,17 +3,17 @@ import {useDeps} from 'react-simple-di'
 import {composeWithTracker, composeAll} from 'react-komposer'
 
 export const composer = ({context, title, edit}, onData) => {
-  const {Meteor, Collections, Tracker, Session} = context();
+  const {Meteor, Collections, Session} = context();
   let page = Session.get('currentPage')
-  console.log('PAGE CONTEINER CALLED, edit is ', edit);
   Meteor.subscribe('page', title, () => {
-    let page = Collections.Pages.findOne({title});
-    console.log('Calling onData from subscription, page is ', page);
+    page = Collections.Pages.findOne({title});
     onData(null, {page, Session});
   });
 
-  if (page) {
-    console.log('Calling onData from composer outside sub, page is ', page);
+
+  if (page && page.saved) {
+    page.saved = false
+    Session.set('currentPage', page)
     onData(null, {page, Session});
   }
 

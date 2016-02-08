@@ -2,9 +2,8 @@ import React from 'react';
 
 
 class EditButton extends React.Component {
-  editMode(test) {
+  editMode() {
     const {editMode} = this.props;
-    console.log(test);
     editMode();
   }
   render() {

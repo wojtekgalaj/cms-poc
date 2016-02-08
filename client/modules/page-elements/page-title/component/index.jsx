@@ -1,42 +1,19 @@
 import React from 'react'
+import MyUtils from '/client/utils/utils'
+
 
 class PageTitle extends React.Component {
 
-  fillInTheBlanks(data) {
-    data.title = data.title || 'Placeholder'
-    data.subTitle = data.subTitle || 'Placeholder'
-    return data
-  }
-
-  updatePageModel() {
-    const {Session} = this.props
-    let {data} = this.props
-    const {title, subTitle} = this.refs
-    const pageModel = Session.get('currentPage')
-    const refCR = data.edit ? 'value' : 'textContent'
-
-    data = this.fillInTheBlanks(data)
-
-    pageModel.elements[data.positionOnPage] = {
-      component: 'PageTitle',
-      data: {
-        title: title[refCR],
-        subTitle: subTitle[refCR]
-      }
-    }
-    Session.set('currentPage', pageModel)
-  }
-
   componentDidMount() {
-    this.updatePageModel()
+    MyUtils.updatePageModel(this.props, this.refs, 'PageTitle')
   }
 
   onInputChange() {
-    this.updatePageModel()
+    MyUtils.updatePageModel(this.props, this.refs, 'PageTitle')
   }
 
   render() {
-    const {data, Session} = this.props
+    const {data} = this.props
     const presentation = (
       <div>
         <h1 ref='title'>{data.title}</h1>

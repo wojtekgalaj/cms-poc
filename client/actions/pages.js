@@ -4,21 +4,22 @@ export default {
     Session.set('editMode', !currentMode);
   },
 
-  addElement(context, name, pageTitle, index, order) {
+  addElement({Meteor, Session}, name, pageTitle, index) {
     const sessionPage = Session.get('currentPage')
     // do the adding here and call save page
-    debugger
-    let elements = sessionPage.elements.splice(index + 1, 0, {
+    sessionPage.elements.splice(index + 1, 0, {
       component: name,
       data: {}
     })
-    sessionPage.elements = elements
+    sessionPage.saved = true
     Session.set('currentPage', sessionPage)
     Meteor.call('page.save', sessionPage)
   },
 
   savePage({Meteor, Session}) {
     const sessionPage = Session.get('currentPage')
+    sessionPage.saved = true
+    Session.set('currentPage', sessionPage)
     Meteor.call('page.save', sessionPage)
   },
 

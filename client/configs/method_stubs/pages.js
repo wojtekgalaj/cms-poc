@@ -30,14 +30,12 @@ export default function () {
       });
 
       oldPage.elements = elements;
-      console.log('Methid stub insert');
       Pages.update({title: pageTitle}, oldPage)
     },
 
     'page.add'(title) {
       check(title, String)
       if (Pages.findOne({title})) {
-        console.log('Page with that name exists already');
         return
       }
       Pages.insert({

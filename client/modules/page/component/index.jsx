@@ -16,6 +16,13 @@ class Page extends React.Component {
     });
   }
 
+  componentDidUpdate() {
+    const {Session, page} = this.props
+    const sessionPage = Session.get('currentPage')
+    sessionPage.title = page.title
+    Session.set('currentPage', sessionPage)
+  }
+
   addPage(title) {
     const {addPage} = this.props
     const newTitle = this.refs.newPageTitle.value

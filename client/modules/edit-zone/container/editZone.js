@@ -3,14 +3,18 @@ import {useDeps} from 'react-simple-di'
 import {composeWithTracker, composeAll} from 'react-komposer'
 
 export const composer = ({context, title}, onData) => {
-  const {Meteor, Collections, LocalState, FlowRouter} = context();
+  const {Meteor, Collections, Session, FlowRouter} = context();
+  let elements = Session.get('elements')
 
   Meteor.subscribe('elements', () => {
-    const elements = Collections.Elements.find({}).fetch()
+    elements = Collections.Elements.find({}).fetch()
+    Session.set('elements', elements)
     onData(null, {elements, FlowRouter});
   });
 
-  onData();
+  if (elements) {
+    onData(null, {elements, FlowRouter});
+  }
 };
 
 export const depsMapper = (context, actions) => {
@@ -24,5 +28,3 @@ export default composeAll(
   composeWithTracker(composer),
   useDeps(depsMapper)
 )(EditZone);
-
-
