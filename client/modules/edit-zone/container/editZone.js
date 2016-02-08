@@ -20,6 +20,7 @@ export const composer = ({context, title}, onData) => {
 export const depsMapper = (context, actions) => {
   return {
     addElement: actions.pages.addElement,
+    removeElement: actions.pages.removeElement,
     context: () => context
   }
 };

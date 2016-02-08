@@ -16,6 +16,15 @@ export default {
     Meteor.call('page.save', sessionPage)
   },
 
+  removeElement({Meteor, Session}, name, pageTitle, index) {
+    const sessionPage = Session.get('currentPage')
+    sessionPage.elements.splice(index, 1)
+    sessionPage.saved = true
+    Session.set('currentPage', sessionPage)
+    Meteor.call('page.save', sessionPage)
+  },
+
+
   savePage({Meteor, Session}) {
     const sessionPage = Session.get('currentPage')
     sessionPage.saved = true

@@ -75,6 +75,7 @@ class Page extends React.Component {
     // switch.
 
     return this.props.page.elements.map((el, index) => {
+      if (!el) {return}
       el.data.positionOnPage = index
       el.data.edit = edit
       switch (el.component) {
