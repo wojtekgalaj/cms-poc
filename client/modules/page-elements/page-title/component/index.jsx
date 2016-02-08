@@ -13,16 +13,15 @@ class PageTitle extends React.Component {
     let {data} = this.props
     const {title, subTitle} = this.refs
     const pageModel = Session.get('currentPage')
+    const refCR = data.edit ? 'value' : 'textContent'
 
     data = this.fillInTheBlanks(data)
-
-    if (!data.edit) return;
 
     pageModel.elements[data.positionOnPage] = {
       component: 'PageTitle',
       data: {
-        title: title.value,
-        subTitle: subTitle.value
+        title: title[refCR],
+        subTitle: subTitle[refCR]
       }
     }
     Session.set('currentPage', pageModel)
@@ -37,11 +36,11 @@ class PageTitle extends React.Component {
   }
 
   render() {
-    const {data} = this.props
+    const {data, Session} = this.props
     const presentation = (
       <div>
-        <h1>{data.title}</h1>
-        <h3>{data.subTitle}</h3>
+        <h1 ref='title'>{data.title}</h1>
+        <h3 ref='subTitle'>{data.subTitle}</h3>
       </div>
     )
 

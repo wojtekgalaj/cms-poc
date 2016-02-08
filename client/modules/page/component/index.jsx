@@ -8,7 +8,6 @@ import TextBlock from '../../page-elements/text-block/container/text-block'
 
 class Page extends React.Component {
 
-
   componentWillMount() {
     const {Session, page} = this.props
     Session.set('currentPage', {
@@ -31,10 +30,16 @@ class Page extends React.Component {
   }
 
   savePage() {
-    const {savePage} = this.props
+    const {savePage, page} = this.props
+    const {FlowRouter} = this.props.context()
     savePage()
+    FlowRouter.go('/page/' + page.title)
   }
 
+  editPage() {
+    const {page} = this.props
+    FlowRouter.go('/page/' + page.title + '/edit')
+  }
 
   renderContent() {
     const {page} = this.props
@@ -44,19 +49,18 @@ class Page extends React.Component {
     } else {
       return this.renderEditZone(page.title)
     }
+
   }
 
   renderEditZone(title) {
     return <EditZone index={0} pageTitle={title} order='before'/>
   }
 
-
   renderElements() {
     const {page, edit, Session} = this.props
     // I need to find a way to do this without the
     // switch.
 
-    console.log('xxx ', this.props.page.elements);
     return this.props.page.elements.map((el, index) => {
       el.data.positionOnPage = index
       el.data.edit = edit
@@ -98,8 +102,9 @@ class Page extends React.Component {
         {this.renderContent()}
         {edit ? <button onClick={this.savePage.bind(this)}>SAVE</button> : '' }
         <button onClick={this.addPage.bind(this)}>Add Page</button>
-        <input type="text" ref="newPageTitle" defaultValue="Title for new page"></input>
+        <input type="text" ref="newPageTitle" placeholder="Title for new page"></input>
         <button onClick={this.deletePage.bind(this)}>Delete Page</button>
+        {!edit ? <button onClick={this.editPage.bind(this)}>Edit Page</button> : ''}
       </div>
     )
   }

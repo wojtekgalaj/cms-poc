@@ -3,11 +3,11 @@ import {useDeps} from 'react-simple-di'
 import {composeWithTracker, composeAll} from 'react-komposer'
 
 export const composer = ({context, title}, onData) => {
-  const {Meteor, Collections, LocalState} = context();
+  const {Meteor, Collections, LocalState, FlowRouter} = context();
 
   Meteor.subscribe('elements', () => {
     const elements = Collections.Elements.find({}).fetch()
-    onData(null, {elements});
+    onData(null, {elements, FlowRouter});
   });
 
   onData();

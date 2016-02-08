@@ -5,7 +5,16 @@ export default {
   },
 
   addElement(context, name, pageTitle, index, order) {
-    Meteor.call('page.addElement', name, pageTitle, index, order)
+    const sessionPage = Session.get('currentPage')
+    // do the adding here and call save page
+    debugger
+    let elements = sessionPage.elements.splice(index + 1, 0, {
+      component: name,
+      data: {}
+    })
+    sessionPage.elements = elements
+    Session.set('currentPage', sessionPage)
+    Meteor.call('page.save', sessionPage)
   },
 
   savePage({Meteor, Session}) {

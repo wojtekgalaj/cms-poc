@@ -1,5 +1,3 @@
-import {Redux} from 'redux'
-
 /*
 {
   currentPage: 'home',
@@ -21,9 +19,8 @@ import {Redux} from 'redux'
 */
 
 
-const mainReducer = (state, action) => {
-  console.log(action);
+const cms = (state, action) => {
   return state
 }
 
-export default mainReducer
+export default cms

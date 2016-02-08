@@ -7,12 +7,14 @@ class EditZone extends React.Component {
       index,
       pageTitle,
       order,
-      addElement
+      addElement,
+      FlowRouter
     } = this.props
 
     addElement(name, pageTitle, index, order)
-    window.location.reload(true)
+    FlowRouter.reload()
   }
+
 
   render() {
     const containerStyle = {

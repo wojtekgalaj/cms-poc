@@ -23,7 +23,7 @@ export const initRoutes = (context, actions) => {
     action({title}) {
       mount(MainLayoutCtx, {
         content: () => {
-          return (<Page title={title} />)
+          return (<Page title={title} edit={false} />)
         }
       });
     }
