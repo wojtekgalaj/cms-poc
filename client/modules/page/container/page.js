@@ -37,6 +37,7 @@ export const depsMapper = (context, actions) => ({
   savePage: actions.pages.savePage,
   deletePage: actions.pages.deletePage,
   addPage: actions.pages.addPage,
+  reset: actions.pages.reset,
   context: () => context
 })
 

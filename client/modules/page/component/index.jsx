@@ -45,7 +45,13 @@ class Page extends React.Component {
 
   editPage() {
     const {page} = this.props
+    const {FlowRouter} = this.props.context()
     FlowRouter.go('/page/' + page.title + '/edit')
+  }
+
+  reset() {
+    const {reset} = this.props
+    reset()
   }
 
   renderContent() {
@@ -104,6 +110,19 @@ class Page extends React.Component {
 
   render() {
     const {page, edit} = this.props
+
+    const style = {
+      reset: {
+        pointer: 'hand',
+        border: 'none',
+        background: 'red',
+        padding: '10px',
+        position: 'absolute',
+        top: '10px',
+        right: '10px'
+      }
+    }
+
     return (
       <div>
         {this.renderContent()}
@@ -112,6 +131,7 @@ class Page extends React.Component {
         <input type="text" ref="newPageTitle" placeholder="Title for new page"></input>
         <button onClick={this.deletePage.bind(this)}>Delete Page</button>
         {!edit ? <button onClick={this.editPage.bind(this)}>Edit Page</button> : ''}
+        <button onClick={this.reset.bind(this)} style={style.reset}>RESET</button>
       </div>
     )
   }

@@ -1,39 +1,14 @@
 import React from 'react'
+import ElementUtils from '/client/utils/utils'
 
 class TextBlock extends React.Component {
 
-  fillInTheBlanks(data) {
-    data.title = data.title || 'Placeholder'
-    data.subTitle = data.subTitle || 'Placeholder'
-    return data
-  }
-
-  updatePageModel() {
-    const {Session} = this.props
-    let {data} = this.props
-    const {text} = this.refs
-    const pageModel = Session.get('currentPage')
-
-    data = this.fillInTheBlanks(data)
-
-    if (!data.edit) return;
-
-    pageModel.elements[data.positionOnPage] = {
-      component: 'TextBlock',
-      data: {
-        text: text.value
-      }
-    }
-    Session.set('currentPage', pageModel)
-
-  }
-
   onInputChange() {
-    this.updatePageModel()
+    ElementUtils.updatePageModel(this.props, this.refs, 'TextBlock')
   }
 
   componentDidMount() {
-    this.updatePageModel()
+    ElementUtils.updatePageModel(this.props, this.refs, 'TextBlock')
   }
 
   render() {
@@ -48,6 +23,7 @@ class TextBlock extends React.Component {
     const editing = (
       <div>
         <hr/>
+        <small>Text Block</small><br/>
         <input
           onChange={this.onInputChange.bind(this)}
           type='text' ref='text' defaultValue={data.text}/>

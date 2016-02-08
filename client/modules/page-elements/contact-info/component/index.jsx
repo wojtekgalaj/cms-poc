@@ -1,39 +1,15 @@
 import React from 'react'
+import ElementUtils from '/client/utils/utils'
 
 this.displayName = 'ContactInfo'
 class ContactInfo extends React.Component {
 
-  fillInTheBlanks(data) {
-    data.tel = data.tel || 'Placeholder'
-    data.email = data.email || 'Placeholder'
-    return data
-  }
-
-  updatePageModel() {
-    const {Session} = this.props
-    let {data} = this.props
-    const {tel, email} = this.refs
-    const pageModel = Session.get('currentPage')
-
-    data = this.fillInTheBlanks(data)
-
-    if (!data.edit) return;
-
-    pageModel.elements[data.positionOnPage] = {
-      component: 'ContactInfo',
-      data: {
-        tel: tel.value,
-        email: email.value
-      }
-    }
-    Session.set('currentPage', pageModel)
-  }
   componentDidMount() {
-    this.updatePageModel()
+    ElementUtils.updatePageModel(this.props, this.refs, 'ContactInfo')
   }
 
   onInputChange() {
-    this.updatePageModel()
+    ElementUtils.updatePageModel(this.props, this.refs, 'ContactInfo')
   }
 
   render() {
@@ -41,20 +17,23 @@ class ContactInfo extends React.Component {
     const presentation = (
       <div>
         <hr/>
-        <p>Tel: {data.tel}</p>
-        <p>email: {data.email}</p>
+        <p ref='tel'>Tel: {data.tel}</p>
+        <p ref='email'>email: {data.email}</p>
       </div>
     )
 
     const editing = (
       <div>
         <hr/>
+        <small>Contact Info</small>
         <label>Tel</label>
         <input
+          ref='tel'
           onChange={this.onInputChange.bind(this)}
           type="text" ref="tel" defaultValue={data.tel}/>
         <label>eMail</label>
         <input
+          ref='email'
           onChange={this.onInputChange.bind(this)}
           type="text" ref="email" defaultValue={data.email}/>
         <hr/>

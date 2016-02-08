@@ -1,15 +1,15 @@
 import React from 'react'
-import MyUtils from '/client/utils/utils'
+import ElementUtils from '/client/utils/utils'
 
 
 class PageTitle extends React.Component {
 
   componentDidMount() {
-    MyUtils.updatePageModel(this.props, this.refs, 'PageTitle')
+    ElementUtils.updatePageModel(this.props, this.refs, 'PageTitle')
   }
 
   onInputChange() {
-    MyUtils.updatePageModel(this.props, this.refs, 'PageTitle')
+    ElementUtils.updatePageModel(this.props, this.refs, 'PageTitle')
   }
 
   render() {
@@ -24,6 +24,7 @@ class PageTitle extends React.Component {
     const editing = (
       <div>
         <hr/>
+        <small>Page Title</small>
         <h1><input
               onChange={this.onInputChange.bind(this)}
               ref='title'

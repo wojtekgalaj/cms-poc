@@ -36,7 +36,7 @@ export default {
     Meteor.call('page.add', title)
   },
 
-  clearErrors({LocalState}) {
-    return LocalState.set('SAVING_ERROR', null);
+  reset({Meteor}) {
+    Meteor.call('page.reset')
   }
 };

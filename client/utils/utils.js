@@ -1,4 +1,4 @@
-const MyUtils = (() => {
+const ElementUtils = (() => {
 
   return {
     fillInTheBlanks(data) {
@@ -23,7 +23,7 @@ const MyUtils = (() => {
       const pageModel = Session.get('currentPage')
       const refCR = data.edit ? 'value' : 'textContent'
 
-      data = MyUtils.fillInTheBlanks(data)
+      data = ElementUtils.fillInTheBlanks(data)
 
       let elementData = this.prepareDataFromRefs(refs, refCR)
 
@@ -36,4 +36,4 @@ const MyUtils = (() => {
   }
 })()
 
-export default MyUtils
+export default ElementUtils

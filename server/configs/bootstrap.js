@@ -1,6 +1,6 @@
 import {Pages, Elements} from '/libs/collections'
 
-export default function () {
+export default function bootstrap() {
   if (!Pages.findOne()) {
     Pages.insert({
       title: 'home',

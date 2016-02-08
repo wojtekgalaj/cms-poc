@@ -1,6 +1,7 @@
 import {Meteor} from 'meteor/meteor'
 import {check} from 'meteor/check'
-import {Pages} from '/libs/collections'
+import {Pages, Elements} from '/libs/collections'
+import bootstrap from '../configs/bootstrap'
 
 Meteor.methods({
   'page.save'(page) {
@@ -36,12 +37,17 @@ Meteor.methods({
   'page.add'(title) {
     check(title, String)
     if (Pages.findOne({title})) {
-      console.log('Page with that name exists already');
-      return
+      return false
     }
     Pages.insert({
       title,
       elements: []
     })
+  },
+
+  'page.reset'() {
+    Elements.remove({})
+    Pages.remove({})
+    bootstrap()
   }
 })

@@ -3,15 +3,18 @@ import React from 'react';
 
 class Navigation extends React.Component {
 
-  editMode() {
-    const {editMode} = this.props;
-    editMode();
+  clearSessionPage() {
+    const {Session} = this.props
+    Session.set('currentPage', {
+      title: '',
+      elements: []
+    })
   }
 
   render() {
     const {pages} = this.props;
     return (
-      <nav>
+      <nav onClick={this.clearSessionPage.bind(this)}>
         {pages.map((current, index) => (
             <a key={index} href={`/page/${current.title}`}>{current.title} </a>
           )
