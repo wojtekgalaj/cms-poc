@@ -2,10 +2,8 @@ const ElementUtils = (() => {
 
   return {
     fillInTheBlanks(data) {
-      console.log('x ', data);
       Object.keys(data).forEach((key) => {
-        console.log('filling in data key ', data[key]);
-        data[key] = data[key] === undefined ? 'placeholder' : data[key]
+        data[key] = data[key] === '' ? 'placeholder' : data[key]
       })
       return data
     },
@@ -25,16 +23,14 @@ const ElementUtils = (() => {
       const pageModel = Session.get('currentPage')
       const refCR = data.edit ? 'value' : 'textContent'
 
-      data = ElementUtils.fillInTheBlanks(data)
-
       let elementData = this.prepareDataFromRefs(refs, refCR)
+      data = Object.assign({}, data, ElementUtils.fillInTheBlanks(elementData))
 
       pageModel.elements[data.positionOnPage] = {
         component: elementName,
         data: elementData
       }
 
-      console.log(`Updating ${elementName} on ${data.positionOnPage} with ${JSON.stringify(elementData)}`);
       Session.set('currentPage', pageModel)
     }
   }

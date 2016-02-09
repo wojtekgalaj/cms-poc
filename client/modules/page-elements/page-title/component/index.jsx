@@ -32,11 +32,11 @@ class PageTitle extends React.Component {
         <h1><input
               onChange={this.onInputChange.bind(this)}
               ref='title'
-              type="text" defaultValue={data.title}/></h1>
+              type="text" defaultValue={data.title || 'placeholder'}/></h1>
         <h3><input
               onChange={this.onInputChange.bind(this)}
               ref='subTitle'
-              type="text" defaultValue={data.subTitle}/></h3>
+              type="text" defaultValue={data.subTitle || 'placeholder'}/></h3>
         <hr/>
       </div>
     )

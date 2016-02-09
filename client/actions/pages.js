@@ -6,7 +6,9 @@ export default {
 
   addElement({Meteor, Session}, name, pageTitle, index) {
     const sessionPage = Session.get('currentPage')
-    // do the adding here and call save page
+    // TODO: I need a way to know how to populate data
+    // for each type of component. It will need to be a
+    // module I can reuse all over the place
     sessionPage.elements.splice(index + 1, 0, {
       component: name,
       data: {}
