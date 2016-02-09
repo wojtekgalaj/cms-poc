@@ -19,26 +19,28 @@ class PageTitle extends React.Component {
   render() {
     const {data} = this.props
     const presentation = (
-      <div>
-        <h1 ref='title'>{data.title}</h1>
-        <h3 ref='subTitle'>{data.subTitle}</h3>
+      <div className='ep-feature__header'>
+        <h3 className='ep-feature__title' ref='title'>{data.title}</h3>
+        <p ref='subTitle' className="ep-feature__subtitle">
+          {data.subTitle}
+        </p>
       </div>
     )
 
     const editing = (
-      <div>
-        <hr/>
-        <small>Page Title</small>
-        <h1><input
+      <div className='ep-feature__header'>
+        <h3 className='ep-feature__title' ref='title'><input
               onChange={this.onInputChange.bind(this)}
               ref='title'
-              type="text" defaultValue={data.title || 'placeholder'}/></h1>
-        <h3><input
+              type="text" defaultValue={data.title || 'placeholder'}/></h3>
+        <p ref='subTitle' className="ep-feature__subtitle">
+          <input
               onChange={this.onInputChange.bind(this)}
               ref='subTitle'
-              type="text" defaultValue={data.subTitle || 'placeholder'}/></h3>
-        <hr/>
+              type="text" defaultValue={data.subTitle || 'placeholder'}/>
+        </p>
       </div>
+
     )
 
     return data.edit ? editing : presentation

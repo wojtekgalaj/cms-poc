@@ -114,12 +114,11 @@ class Page extends React.Component {
 
     const style = {
       reset: {
-        pointer: 'hand',
         border: 'none',
         background: 'red',
         padding: '10px',
         position: 'absolute',
-        top: '10px',
+        bottom: '10px',
         right: '10px'
       }
     }
