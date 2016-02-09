@@ -5,18 +5,21 @@ import Navigation from '../../navigation/container/navigation.js';
 // };
 
 const Layout = ({content = () => null }) => {
-  var containerStyle = {
-    width: '600px',
-    margin: 'auto',
-    fontFamily: 'sans-serif'
-  }
 
   return (
     <div
-      style={containerStyle}>
-      <h1>CMS</h1>
-      <Navigation/>
-      <main>{content()}</main>
+      className='ep-container'>
+      <div className='ep-header'>
+        <header className='ep-header__wrapper'>
+          <div className='ep-header__title'>
+            <h3>cms PoC</h3>
+          </div>
+          <Navigation/>
+        </header>
+      </div>
+      <div className="ep-feature__wrapper">
+        <main>{content()}</main>
+      </div>
     </div>
   )
 }
