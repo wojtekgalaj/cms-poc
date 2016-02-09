@@ -6,6 +6,9 @@ Meteor.publish('page', function (title) {
   check(title, String);
   const selector = {title};
   return Pages.find(selector);
+}, {
+  url: '/page/:0',
+  method: 'get'
 });
 
 Meteor.publish('page.titles', function () {
