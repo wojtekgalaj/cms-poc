@@ -6,6 +6,12 @@ import ContactInfo from '../../page-elements/contact-info/container/contact-info
 import PageTitle from '../../page-elements/page-title/container/page-title'
 import TextBlock from '../../page-elements/text-block/container/text-block'
 
+const elementMappings = {
+  ContactInfo,
+  PageTitle,
+  TextBlock
+}
+
 class Page extends React.Component {
 
   componentWillMount() {
@@ -71,41 +77,17 @@ class Page extends React.Component {
 
   renderElements() {
     const {page, edit, Session} = this.props
-    // I need to find a way to do this without the
-    // switch.
 
     return this.props.page.elements.map((el, index) => {
       if (!el) {return}
       el.data.positionOnPage = index
       el.data.edit = edit
-      switch (el.component) {
-        case 'ContactInfo':
-          return (
-            <div key={index}>
-              <ContactInfo data={el.data}/>
-              {edit ? <EditZone index={index} pageTitle={page.title} order='after'/> : <span></span>}
-            </div>
-          )
-        case 'PageTitle':
-          return (
-            <div key={index}>
-              <PageTitle data={el.data}/>
-              {edit ? <EditZone index={index} pageTitle={page.title} order='after'/> : <span></span>}
-            </div>
-          )
-        case 'TextBlock':
-          return (
-            <div key={index}>
-              <TextBlock data={el.data}/>
-              {edit ? <EditZone index={index} pageTitle={page.title} order='after'/> : <span></span>}
-            </div>
-          )
-
-        default:
-
-      }
-      // This renders to the dom an unrendered component
-      // return ReactDOM.createElement(el.component, el.data);
+      return (
+        <div key={index}>
+          {ReactDOM.createElement(elementMappings[el.component], {data: el.data})}
+          {edit ? <EditZone index={index} pageTitle={page.title} order='after'/> : <span></span>}
+        </div>
+      )
     })
   }
 
